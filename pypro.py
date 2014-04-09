@@ -3,6 +3,7 @@ from pyswip import *
 p=Prolog()
 p.consult("saludos.pl") #El consult lo que hace es carga el archivo .pl con todas las reglas
 def imprimir():
+	p.consult("saludos.pl")
 	for i in p.query("saludo(X)"): #hago una consulta e imprimo todos los que cumplen la consulta
 		print i["X"]
 
@@ -11,5 +12,3 @@ def agregar(saludo): #Agrega un nuevo saludo al archivo saludos.pl, carga el arc
 	functor="\nsaludo("
 	functor=functor+saludo+")."
 	arch.write(functor)
-	p=Prolog()
-	p.consult("saludos.pl")
