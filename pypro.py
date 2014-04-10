@@ -12,3 +12,5 @@ def agregar(saludo): #Agrega un nuevo saludo al archivo saludos.pl, carga el arc
 	functor="\nsaludo("
 	functor=functor+saludo+")."
 	arch.write(functor)
+
+imprimir()
