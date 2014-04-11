@@ -14,14 +14,19 @@ def imprimirPlato():
 
 def agregarRest(nombre,tipoComida,ubicacion,telefono,horario): #Agrega un nuevo saludo al archivo saludos.pl y a la base de conocimientos
 	arch = file("rest.pl","a")
-	functor="\nrestaurante("
+	functor="restaurante("
 	functor=functor+nombre+","+tipoComida+","+ubicacion+","+telefono+","+horario+")."
-	arch.write(functor)
-	p.assertz(functor) #con esto carga las varas a la base de conocimientos
+	arch.write(functor+"\n")
+	p.assertz("'"+functor+"'") #con esto carga las varas a la base de conocimientos
 
 def agregarPlatillo(rest,nombrePlat,sabor,PaisOrg,Ingredientes): #sabor puede ser picante, salado, dulce, agridulce, amargo
 	arch = file("rest.pl","a")
-	functor="\nplatillo("
+	functor="platillo("
 	functor=functor+rest+","+nombrePlat+","+sabor+","+PaisOrg+","+Ingredientes+")." #Ingredientes por ahora lo agrego como si fuera una lista de python, creo que en prolog el manejo es algo similar
-	arch.write(functor)
-	p.assertz(functor) 
+	arch.write(functor+"\n")
+
+def pruebas():
+	agregarRest("MC","Hamburguesas","Cartago","25354545","todo el dia")
+	imprimirRest()
+
+pruebas()
