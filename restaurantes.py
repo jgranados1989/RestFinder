@@ -8,7 +8,7 @@ def imprimirRest():
 		print i["A"]
 
 def imprimirPlato():
-	p.consult("rest.pl")
+	p.consult("plati.pl")
 	for plato in p.query("platillo(_,A,_,_,_)"):
 		print plato["A"]
 
@@ -20,10 +20,11 @@ def agregarRest(nombre,tipoComida,ubicacion,telefono,horario): #Agrega un nuevo 
 	p.assertz("'"+functor+"'") #con esto carga las varas a la base de conocimientos
 
 def agregarPlatillo(rest,nombrePlat,sabor,PaisOrg,Ingredientes): #sabor puede ser picante, salado, dulce, agridulce, amargo
-	arch = file("rest.pl","a")
+	arch = file("plati.pl","a")
 	functor="platillo("
 	functor=functor+rest+","+nombrePlat+","+sabor+","+PaisOrg+","+Ingredientes+")." #Ingredientes por ahora lo agrego como si fuera una lista de python, creo que en prolog el manejo es algo similar
-	arch.write(functor+"\n")
+	arch.write(functor)
+	p.assertz("'"+functor+"'") #con esto carga las varas a la base de conocimientos
 
 def pruebas():
 	#agregarRest("mC","hamburguesas","cartago","25354545","tod_el_dia")
