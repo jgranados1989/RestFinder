@@ -26,7 +26,7 @@ def agregarPlatillo(rest,nombrePlat,sabor,PaisOrg,Ingredientes): #sabor puede se
 	arch.write(functor+"\n")
 
 def pruebas():
-	agregarRest("mC","hamburguesas","cartago","25354545","todo el dia")
+	#agregarRest("mC","hamburguesas","cartago","25354545","tod_el_dia")
 	imprimirRest()
 
 pruebas()
