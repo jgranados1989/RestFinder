@@ -16,7 +16,7 @@ def agregarRest(nombre,tipoComida,ubicacion,telefono,horario): #Agrega un nuevo 
 	arch = file("rest.pl","a")
 	functor="restaurante("
 	functor=functor+nombre+","+tipoComida+","+ubicacion+","+telefono+","+horario+")."
-	arch.write(functor+"\n")
+	arch.write(functor)
 	p.assertz("'"+functor+"'") #con esto carga las varas a la base de conocimientos
 
 def agregarPlatillo(rest,nombrePlat,sabor,PaisOrg,Ingredientes): #sabor puede ser picante, salado, dulce, agridulce, amargo
@@ -26,7 +26,7 @@ def agregarPlatillo(rest,nombrePlat,sabor,PaisOrg,Ingredientes): #sabor puede se
 	arch.write(functor+"\n")
 
 def pruebas():
-	agregarRest("MC","Hamburguesas","Cartago","25354545","todo el dia")
+	agregarRest("mC","hamburguesas","cartago","25354545","todo el dia")
 	imprimirRest()
 
 pruebas()
