@@ -9,22 +9,30 @@
 	#70AB8F Verde/celeste raro
 	#383127 cafe
 	-->
+		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+		<link href="http://fonts.googleapis.com/css?family=Dancing+Script:700|EB+Garamond" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Josefin+Sans:700|Amatic+SC:700" rel="stylesheet" type="text/css" />
+		
+
 
 
 		<style type="text/css">
 
 		body,html{
 			height: 100%;
-			background-color: #DC5B21;
+			width: 100%;
+			background-color: #2B2B2B;
 		}
 
 
 		#contenidoPrincipal{
-			width: 75%;
+			width: 100%;
+			height: 100%;
+			min-height: 100%;
 			margin: 0 auto;
 			text-align: center;
 			font-family: monospace;
-			background-color: #E4DBBF;
+			background-color: #2B2B2B;
 			border-radius: 0.9em;
 			padding: 0.3em;
 			box-shadow: 2em;
@@ -38,7 +46,14 @@
 
 		h2{
 			font-size: 4em;
-			color: #70AB8F;
+			font-family: 'Dancing Script', cursive;
+			color: #2B2B2B;
+			margin:0;
+		}
+
+		h2:hover{
+			color: #DE1B1B;
+			cursor: progress;
 		}
 
 		h3{
@@ -46,28 +61,29 @@
 		}
 
 		h1{
-			font-weight: 400;
+			font-family: 'Dancing Script', cursive;
 			font-size: 3em;
-			color: #383127;
+			color: #8A8A8A;
 		}
 	
 		p{
 			font-size: 1.5em;
-			color: #383127;
+			font-family: 'Josefin Sans', sans-serif;
+			color: #DDDDDD;
 		}
 
 
 		li{
+			font-family: 'Josefin Sans', sans-serif;
 			display: inline-block;
 			font-size: 1.7em;
-			margin-right: 2em;
+			margin-right: 1em;
 			cursor: pointer;
 			padding: 0.3em;
 		}
 
 		a:hover{
-				color: #70AB8F;
-				font-weight: bold;
+			color: #DE1B1B;
 		}
 
 		#menu{
@@ -75,25 +91,31 @@
 		}
 
 		#separador{
-			background-color: #70AB8F;
-			height: 0.2em;
+			background-color: #DE1B1B;
+			height: 0.4em;
+		}
+
+		#separadorClaro{
+			background-color: #F6F6F6;
+			height: 0.4em;
+		}
+
+		#barraSuperior{
+			border-radius: 0.5em;
+			background-color: #F6F6F6;
+			
+			text-align: center;
+
 		}
 
 
 		</style>
 
-
-
-
-
-
-
 	</head>
 
 	<body>
-
-
-		<div id="contenidoPrincipal">
+		<div id="barraSuperior">
+			<h2>RestFinder</h2>
 			<div id="menu">
 				<nav>
 					<ul>
@@ -106,11 +128,16 @@
 			</div>
 
 			<div id="separador"> </div>
-			
+			<div id="separadorClaro"> </div>
 
-			<h2>RestFinder</h2>
 
-			<h1>Bienvenido al sitio web de RestFinder</h1>
+		</div>
+		<br>
+
+		<div id="contenidoPrincipal">
+		
+
+			<h1>Bienvenido a RestFinder</h1>
 
 			<br>
 			
