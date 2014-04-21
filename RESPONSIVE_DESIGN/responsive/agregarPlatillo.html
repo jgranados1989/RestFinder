@@ -12,6 +12,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 		<link href="http://fonts.googleapis.com/css?family=Dancing+Script:700|EB+Garamond" rel="stylesheet" type="text/css" />
 		<link href="http://fonts.googleapis.com/css?family=Josefin+Sans:700|Amatic+SC:700" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Fjalla+One|Cantarell:400,400italic,700italic,700" rel="stylesheet" type="text/css" />
 
 
 
@@ -51,11 +52,13 @@
 		}
 
 		h2:hover{
-			color: #DE1B1B;
+			color: #DE1B1B;	
 		}
 
 		h3{
-			font-size: 2.5em;
+			font-size: 4em;
+			font-family: 'Dancing Script', cursive;
+			margin:0;
 		}
 
 		h1{
@@ -72,7 +75,7 @@
 
 
 		li{
-			font-family: 'Josefin Sans', sans-serif;
+			font-family: 'Cantarell', sans-serif;
 			display: inline-block;
 			font-size: 1.7em;
 			margin-right: 1em;
@@ -106,6 +109,25 @@
 
 		}
 
+		label{
+			color: #8A8A8A;
+    		display: inline-block;
+    		width: 16em;
+    		font-family: 'Cantarell', sans-serif;
+    		font-size: 1.3em;
+    		margin-right: 0.5em;
+    		margin-bottom: 0.5em;
+		}		
+		input {
+  			display: inline-block;
+  			height: 1.3em;
+		}
+		
+		#boton{
+			margin-top: 1em;
+			font-size: 1.2em;
+			text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+		}
 
 		</style>
 
@@ -135,22 +157,29 @@
 		<div id="contenidoPrincipal">
 		
 
-			<h1>Acerca de RestFinder</h1>
+			<h1>¿Qué deseas agregar?</h1>
 
-			<br>
-			
-			<p>RestFinder nació de la solicitud de Bombur, un enano glotón que vive en Tierra Media, la solicitud la hizo ya que se le hace más sencillo consultar platillos y restaurantes desde la comodidad de su smartphone.</p>
-			<p>La aplicación está dividida en 2, la parte Front-end, que es la que tiene la función de interactuar con el usuario, que está desarrollada en python.</p>
-			<p>Y la parte back-end, que tiene como función el almacenamiento de datos ingresados en la modalidad de mantenimiento de datos. Esta parte está desarrollada en Prolog</p>
-
-			<h1>Desarrolladores</h1>
-
-			<p>La aplicación fue desarrollada por Estudiantes de la carrera de Administración de Tecnología de Información, impartida en el Instituto Tecnológico de Costa Rica. Los estudiantes fueron los siguientes: </p>
-			<p>Esteban Leandro</p>
-			<p>Fabian Fernandez</p>
-			<p>Jimmy Granados</p>
-		</div>
-
+			<div id="agregarPlat">
+				<!--rest,nombrePlat,sabor,PaisOrg,Ingredientes-->
+				<h3><a>Agregar Platillo</a></h3>
+				<form action="." method="POST">
+					<br>
+					<br>
+        			<label>Ingresa el restaurante del platillo</label><input type="text" name="restPlatillo" required>
+        			<br>
+        			<label>Ingresa el nombre del platillo </label><input type="text" name="nombrePlatillo" required>
+        			<br>
+        			<label>Ingresa el sabor del platillos</label><input type="text" name="saborPlatillo" required>
+        			<br>
+        			<label>Ingresa el pais de origen</label><input type="text" name="paisPlatillo" required>
+        			<br>
+        			<label>Ingresa los ingredientes del platillo</label><input type="text" name="horarioRest" required>
+        			<br>
+        			<input id="boton" type="submit" name="my-form" value="Send">
+    			</form>
+    			<br>
+    			<br>
+			</div>
 
 	</body>
 
