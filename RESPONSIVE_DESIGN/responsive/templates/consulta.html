@@ -42,20 +42,40 @@
 		<div id="contenidoPrincipal">
 		
 
-			<h1>Bienvenido al sitio web de RestFinder</h1>
+			<h1>¿Qué deseas consultar?</h1>
 
 			<br>
-			
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<div id="haceConsulta">
+				<!-- nombre,tipoComida,ubicacion,telefono,horario   -->
+				<form action="." method="POST">
+					<br>
+					<br>
+        			<label>Lista de restaurantes</label><input id="boton" type="submit" name="my-form" value="Consultar lista completa">
+        			<br>
+					<br>
+					<HR WIDTH="75%" Color="#DE1B1B">
+					<br>
+					<br>
+        			<br>
+        			<label>Ingresa el tipo de comida</label>
+        			<input type="text" name="tipoComida" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar por tipo">
+        			<br>
+        			<label>Ingresa el nombre del restaurante</label>
+        			<input type="text" name="ubicacionrest" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar por nombre">
+        			<br>
+        			<label>Ingresa el pais</label>
+        			<input type="text" name="ubicacionrest" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar por país">
+        			<br>
+        			<label>Ingresa el platillo</label>
+        			<input type="text" name="ubicacionrest" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar platillo">
+        			<br>
+        			<label>Ingresa el nombre de un ingrediente</label>
+        			<input type="text" name="ubicacionrest" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar por ingrediente">
 		</div>
-
-
 	</body>
-
-
 </html>
