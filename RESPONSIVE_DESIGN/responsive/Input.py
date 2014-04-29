@@ -3,15 +3,13 @@ import cherrypy
 from cherrypy import quickstart
 from jinja2 import Environment, FileSystemLoader
 from restaurantes import *
-from pyswip import *
+
 
 
 
 
 env = Environment(loader=FileSystemLoader('templates'))
 cherrypy.server.socket_host = 'localhost'
-p=Prolog()
-
 
 class Pagina():
 
@@ -46,9 +44,29 @@ class Pagina():
 		tmpl = env.get_template('acercaDe.html')
 		return tmpl.render()
 
+	@expose
+	def consultas(self):
+		tmpl = env.get_template('consulta.html')
+		return tmpl.render()
+
+	@expose 
+	def consultaTipo(self,tipoComida):
+		lista=restaurantesXtipo(tipoComida)
+		templateVars = { "resConsulta" : lista }
+		tmpl = env.get_template('resultados.html')
+		return tmpl.render()#resConsulta=lista)
+
+	@expose
+	def todosRestaurantes(self):
+		lista = imprimirRest()
+		templateVars = { "resConsulta" : lista }
+		tmpl = env.get_template('resultados.html')
+		return tmpl.render(templateVars)
+
 
 
 ##restPlatillo,nombrePlatillo,saborPlatillo,paisPlatillo,horarioRest
+
 	@expose
 	def addRest(self, nombreRest,tipoComida,ubicacionrest,numeroRest,horarioRest):
 		agregarRest(nombreRest,tipoComida,ubicacionrest,numeroRest,horarioRest)

@@ -11,10 +11,7 @@ def imprimirRest():
 	p.consult("rest.pl")
 	resultados=[]
 	for i in p.query("restaurante(A,_,_,_,_)"): #hago una consulta e imprimo todos los que cumplen la consulta
-		#print str(cont)+i["A"] Impresion de los restaurantes uno por uno
 		resultados.append(str(i["A"]))
-	print resultados
-	print "========== Fin de restaurantes =========="
 	return resultados
 
 '''
