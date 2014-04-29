@@ -47,7 +47,7 @@
 			<br>
 			<div id="haceConsulta">
 				<!-- nombre,tipoComida,ubicacion,telefono,horario   -->
-				<form action="." method="POST">
+				<!--<form action="." method="POST">
 					<br>
 					<br>
         			<label>Lista de restaurantes</label><input id="boton" type="submit" name="my-form" value="Consultar lista completa">
@@ -75,7 +75,44 @@
         			<br>
         			<label>Ingresa el nombre de un ingrediente</label>
         			<input type="text" name="ubicacionrest" required>
-        			<input id="boton" type="submit" name="my-form" value="Consultar por ingrediente">
+        			<input id="boton" type="submit" name="my-form" value="Consultar por ingrediente"> -->
+
+        			<form action="todosRestaurantes" method="POST">
+        				<label>Consultar todos los restaurantes</label>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+        			<form action="consultaTipo" method="POST">
+        				<label>Consultar por tipo</label>
+        				<input type="text" name="tipoComida" required>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+        			<form action="consultaNombreRest" method="POST">
+        				<label>Consultar por nombre</label>
+        				<input type="text" name="nombreRest" required>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+        			<form action="consultaTipo" method="POST">
+        				<label>tipo de comida</label>
+        				<input type="text" name="tipoComida" required>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+        			<form action="consultaPaisPlatillo" method="POST">
+        				<label>Ingresa el país</label>
+        				<input type="text" name="paisPlatillo" required>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+        			<form action="consultaIngrediente" method="POST">
+        				<label>Consultar por ingrediente</label>
+        				<input type="text" name="ingredientePlatillo" required>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+
 		</div>
 	</body>
 </html>
