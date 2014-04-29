@@ -1,8 +1,7 @@
-%Consulta de restaurante por tipo de comida
 restaurantesXtipo(A,X):-restaurante(A,X,_,_,_).
-%Consulra de restauraltes
+
 buscaRest(X,A,B,C,D):-restaurante(X,A,B,C,D).
-%Base de conocimientos de restaurantes
+
 restaurante(mcDonalds,comidaRapida,cartago,25534513,dia).
 restaurante(dennis,comidaRapida,sanJose,24434636,noche).
 restaurante(tierraMedia,comidaGourmet,heredia,12365489,todoElDia).
