@@ -1,0 +1,113 @@
+<!doctype html>
+
+	<head>
+		<title>RestFinder</title>
+		<meta charset="utf8">
+
+	<!-- #E4DBBF crema
+	#DC5B21 anaranjado
+	#70AB8F Verde/celeste raro
+	#383127 cafe
+	-->
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+		<link href="http://fonts.googleapis.com/css?family=Dancing+Script:700|EB+Garamond" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Josefin+Sans:700|Amatic+SC:700" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Fjalla+One|Cantarell:400,400italic,700italic,700" rel="stylesheet" type="text/css" />
+		
+		<link rel="stylesheet" type="text/css" href="estilos.css">
+
+	</head>
+
+	<body>
+		<div id="barraSuperior">
+			<h2>RestFinder</h2>
+			<div id="menu">
+				<nav>
+					<ul>
+						<li><a href="/">Inicio</a></li>
+						<li><a href="/consulta">Consulta</a></li>
+						<li><a href="/agregar">Agregar</a></li>
+						<li><a href="/acercaDe">Acerca de</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="separador"> </div>
+			<div id="separadorClaro"> </div>
+
+
+		</div>
+		<br>
+
+		<div id="contenidoPrincipal">
+		
+
+			<h1>¿Qué deseas consultar?</h1>
+
+			<br>
+			<div id="haceConsulta">
+				<!-- nombre,tipoComida,ubicacion,telefono,horario   -->
+				<!--<form action="." method="POST">
+					<br>
+					<br>
+        			<label>Lista de restaurantes</label><input id="boton" type="submit" name="my-form" value="Consultar lista completa">
+        			<br>
+					<br>
+					<HR WIDTH="75%" Color="#DE1B1B">
+					<br>
+					<br>
+        			<br>
+        			<label>Ingresa el tipo de comida</label>
+        			<input type="text" name="tipoComida" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar por tipo">
+        			<br>
+        			<label>Ingresa el nombre del restaurante</label>
+        			<input type="text" name="ubicacionrest" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar por nombre">
+        			<br>
+        			<label>Ingresa el pais</label>
+        			<input type="text" name="ubicacionrest" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar por país">
+        			<br>
+        			<label>Ingresa el platillo</label>
+        			<input type="text" name="ubicacionrest" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar platillo">
+        			<br>
+        			<label>Ingresa el nombre de un ingrediente</label>
+        			<input type="text" name="ubicacionrest" required>
+        			<input id="boton" type="submit" name="my-form" value="Consultar por ingrediente"> -->
+
+        			<form action="/templates" method="POST">
+        				<label>Consultar todos los restaurantes</label>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+        			<form action="consultaTipo" method="POST">
+        				<label>Consultar por tipo Comida</label>
+        				<input type="text" name="tipoComida" required>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+        			<form action="consultaNombreRest" method="POST">
+        				<label>Consultar por nombre</label>
+        				<input type="text" name="nombreRest" required>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+        			<form action="consultaPaisPlatillo" method="POST">
+        				<label>Ingresa el país</label>
+        				<input type="text" name="paisPlatillo" required>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+        			<form action="consultaIngrediente" method="POST">
+        				<label>Consultar por ingrediente</label>
+        				<input type="text" name="ingredientePlatillo" required>
+        				<input id="boton" type="submit" value="Consultar">
+        			</form>
+
+
+		</div>
+	</body>
+</html>

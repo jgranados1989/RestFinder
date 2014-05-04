@@ -1,0 +1,3 @@
+import restaurantes
+
+restaurantes.imprimirRest()	
