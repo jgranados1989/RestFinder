@@ -20,13 +20,12 @@ def todosRest():
 def todosRestaurantes():
 	if request.method == 'POST':
 		#lista=restaurantes.imprimirRest()
-		lista=restaurantes.buscaRestaurantesXNombre("abc")
-		if len(lista)>0:
+		lista=restaurantes.buscaRestaurantesXNombre("ABC")
+		#print lista
+		if items.amount()>0:
 			return render_template("resultados.html",entradas=lista)
-		else:
-			return render_template("resultados.html",entradas=["No hay resultados"])
-#		else:
-#			return render_template("resultados.html",entradas=["No hay resultados"])
+		else
+			return render_template("resultados.html",entradas="No hay resultados")
 
 @app.route("/consultaTipo",methods=['GET', 'POST'])
 def consultaTipo():
