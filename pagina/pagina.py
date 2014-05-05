@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request, url_for
 import restaurantes
 
 app = Flask(__name__)
@@ -10,13 +9,29 @@ def index():
 
 @app.route('/todosRestaurantes',methods=['GET', 'POST'])
 def todosRestaurantes():
-	#if request.method == 'POST':
-		#lista=restaurantes.imprimirRest()
-	lista=restaurantes.buscaRestaurantesXNombre("abc")
+	lista=restaurantes.imprimirRest()
 	if len(lista)>0:
 		return render_template("resultados.html",entradas=lista)
 	else:
 		return render_template("resultados.html",entradas=["No hay resultados"])
+
+@app.route('/consultaTipo',methods=['POST'])
+def consultaTipo():
+	tipocomida=request.form['tipoComida']
+	lista=restaurantes.restaurantesXtipo(tipocomida)
+	if len(lista)>0:
+		return render_template("resultados.html",entradas=lista)
+	else:
+		return render_template("resultados.html",entradas=["No hay resultados"])
+
+def consultaNombreRest():
+	nombre=request.form['nombreRest']
+	lista=restaurantes.buscaRestaurantesXNombre(nombre)
+	if len(lista)>0:
+		return render_template("resultados.html",entradas=lista)
+	else:
+		return render_template("resultados.html",entradas=["No hay resultados"])
+
 
 if __name__ == '__main__':
     app.run(debug=False,host="192.168.1.103",port=9090)
