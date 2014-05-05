@@ -3,9 +3,7 @@ from flask import Flask
 from flask import render_template
 import restaurantes
 from flask import request
-
-def hola():
-	print "hola"
+from ctypes import *
 
 app=Flask(__name__)
 listaRest=""
@@ -21,17 +19,21 @@ def todosRest():
 @app.route("/todosRestaurantes",methods=['GET', 'POST'])
 def todosRestaurantes():
 	if request.method == 'POST':
-		items = []
-		lista=restaurantes.imprimirRest()
-		items.append(lista)
-		print items
-		#lista=lista.split('')
-		#for item in lista:
-		#	print item
-		#listaRest=restaurantes.imprimirRest()
-		return render_template("resultados.html",entradas=listaRest)
+		#lista=restaurantes.imprimirRest()
+		lista=restaurantes.buscaRestaurantesXNombre("mcDonalds")
+		#print lista
+		return render_template("resultados.html",entradas=lista)
 
+@app.route("/consultaTipo",methods=['GET', 'POST'])
+def consultaTipo():
+	form = SignupForm()
+	if request.method == 'POST':
+		tipocomida="sdf"#form.tipocomida.data
+		#lista=restaurantes.restaurantesXtipo(tipocomida)
+		#print lista
+		return render_template("resultados.html",entradas=tipocomida)
+		
 if __name__=="__main__":
 	#listaRest=restaurantes.imprimirRest()	
-	app.debug=True
+	#app.debug=True
 	app.run()

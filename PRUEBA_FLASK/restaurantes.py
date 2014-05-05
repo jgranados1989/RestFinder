@@ -1,27 +1,26 @@
 from pyswip import *
+from ctypes import *
+from pyswip.prolog import Prolog
+from pyswip import Functor
+from pyswip import Variable
 
 p=Prolog()
-p.consult("rest.pl") #El consult lo que hace es carga el archivo .pl con todas las reglas
+#p.consult("rest.pl") #El consult lo que hace es carga el archivo .pl con todas las reglas
 #p.consult("plati.pl")
-
-
-def generator_to_list(function):
-    def wrapper(*args, **kwargs):
-        return list(function(*args, **kwargs))
-    wrapper.__name__ = function.__name__
-    wrapper.__doc__ = function.__doc__
-    return wrapper
 
 '''
 Lista de restaurantes
 '''
 def imprimirRest():
+	p=Prolog()
+	p.consult('rest.pl')
 	resultados=[]
-	i=p.query("restaurante(A,_,_,_,_)")
-	#for i in p.query("restaurante(A,_,_,_,_)"): #hago una consulta e imprimo todos los que cumplen la consulta
-	#	resultados.append(str(i["A"]))
-	#print resultados
-	return i
+	for result in p.query("restaurante(A,_,_,_,_)"):
+		r=result["A"]
+		print str(r)
+		resultados.append(str(r))
+	print resultados
+	return resultados
 
 '''
 Lista de platillos
@@ -30,10 +29,9 @@ def imprimirPlato():
 	p.consult("plati.pl")
 	resultados=[]
 	for plato in p.query("platillo(_,A,_,_,_)"):
-		resultados.append(str(plato["A"]))
-		#print plato["A"]
+		r=plato["A"]
+		resultados.append(str(r))
 	print resultados
-	print "========== Fin de platillos =========="
 	return resultados
 
 '''
@@ -43,12 +41,10 @@ Entradas: tipo de comida a buscar (comidaRapida,comidaGourmet,pizzeria,etc)
 def restaurantesXtipo(tipocomida):
 	p.consult("rest.pl")
 	resultados=[]
-	print ("Restaurantes que venden "+tipocomida+":")
 	for restaurante in p.query("restaurantesXtipo(A,"+tipocomida+")"):
-		resultados.append(str(restaurante["A"]))
-		#print restaurante["A"]
+		r=restaurante["A"]
+		resultados.append(str(r))
 	print resultados
-	print "========== Fin de consulta =========="
 	return resultados
 
 '''
@@ -58,18 +54,20 @@ Entradas: nombre del restaurante
 def buscaRestaurantesXNombre(nombre):
 	p.consult("rest.pl")
 	resultados=[]
-	print ("Informacion de restaurantes llamados "+nombre+":")
 	for restaurante in p.query("buscaRest("+nombre+",A,B,C,D)"):
 		temporal=[]
-		temporal.append("Tipo comida: " +restaurante["A"])
-		temporal.append("Ubicacion: "+restaurante["B"])
-		temporal.append('Telefono: '+str(restaurante["C"]))
-		temporal.append("Jornada: "+restaurante["D"])
-		temporal.append("========== Fin de restaurante ==========")
+		tipo=restaurante["A"]
+		ubicacion=restaurante["B"]
+		telefono=str(restaurante["C"])
+		jornada=restaurante["D"]
+		temporal.append(str(tipo))
+		temporal.append(str(ubicacion))
+		temporal.append(str(telefono))
+		temporal.append(str(jornada))
+		temporal.append("Fin de restaurante")
 		resultados.append(temporal)
 		temporal=[]
 	print resultados
-	print "========== Fin de consulta =========="
 	return resultados
 
 '''
@@ -79,12 +77,10 @@ Entradas: pais a buscar
 def buscaRestaurantesXPais(pais):
 	p.consult("plati.pl")
 	resultados=[]
-	print ("Restaurantes con platillos cuyo pais de origen es "+pais+":")
 	for restaurante in p.query("buscaRestXPais(Nombre,"+pais+")"):
-		#print "Nombre: " +restaurante["Nombre"]
-		resultados.append("Nombre: " +restaurante["Nombre"])
+		r=restaurante["Nombre"]
+		resultados.append(str(r))
 	print resultados
-	print "========== Fin de consulta =========="
 	return resultados
 
 '''
@@ -97,8 +93,8 @@ def buscaPlatillosRest(restaurante):
 	print ("Platillos de:"+restaurante+":")
 	for restaurante in p.query("platillosXrest("+restaurante+",Nombre,Sabor,Pais,Ingredientes)"):
 		temporal=[]
-		temporal.append("Nombre: " +restaurante["Nombre"])
-		temporal.append("Sabor: " +restaurante["Sabor"])
+		temporal.append(str(restaurante["Nombre"]))
+		temporal.append(str(restaurante["Sabor"]))
 		temporal.append("Pais de origen: " +restaurante["Pais"])
 		temporal.append(["Ingredientes: "]+list(restaurante["Ingredientes"]))
 		#temporal.append(restaurante["Ingredientes"])
@@ -150,4 +146,8 @@ def agregarPlatillo(rest,nombrePlat,sabor,PaisOrg,Ingredientes): #sabor puede se
 Funcion de ejecucion de pruebas
 '''
 
-imprimirRest()
+#imprimirRest()
+#imprimirPlato()
+#restaurantesXtipo("comidaRapida")
+#buscaRestaurantesXNombre("mcDonalds")
+#buscaRestaurantesXPais("alemania")
