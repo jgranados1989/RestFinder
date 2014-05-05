@@ -7,4 +7,4 @@ def hello_world():
     return render_template("index.html")
 
 if __name__ == '__main__':
-    app.run(debug=True,host="192.168.1.138",port=8080)
+    app.run(debug=True,host="192.168.1.138",port=9090)
