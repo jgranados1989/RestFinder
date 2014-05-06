@@ -136,7 +136,8 @@ Agrega un restaurante a la base de conocimientos
 '''
 def agregarRest(nombre,tipoComida,ubicacion,telefono,horario):
 	arch = file("rest.pl","a")
-	functor="\nrestaurante("
+	arch.write('\n')
+	functor="restaurante("
 	functor=functor+nombre+","+tipoComida+","+ubicacion+","+telefono+","+horario+")."
 	arch.write(functor)
 	p.assertz("'"+functor+"'") #con esto carga las varas a la base de conocimientos

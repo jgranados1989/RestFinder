@@ -15,51 +15,51 @@ def agregarRestaurante():
 	numeroRest=request.form['numeroRest']
 	horarioRest=request.form['horarioRest']
 	restaurantes.agregarRest(str(nombreRest),str(tipoComida),str(ubicacionrest),str(numeroRest),str(horarioRest))
-	return render_template("resultados.html",entradas=['Restaurante agregado exitosamente'])
+	return render_template("resConsulta.html",entradas=['Restaurante agregado exitosamente'])
 
 @app.route('/todosRestaurantes',methods=['POST'])
 def todosRestaurantes():
 	lista=restaurantes.imprimirRest()
 	if len(lista)>0:
-		return render_template("resultados.html",entradas=lista)
+		return render_template("resConsulta.html",entradas=lista)
 	else:
-		return render_template("resultados.html",entradas=["No hay resultados"])
+		return render_template("resConsulta.html",entradas=["No hay resultados"])
 
 @app.route('/consultaTipo',methods=['POST'])
 def consultaTipo():
 	tipocomida=request.form['tipoComida']
 	lista=restaurantes.restaurantesXtipo(tipocomida)
 	if len(lista)>0:
-		return render_template("resultados.html",entradas=lista)
+		return render_template("resConsulta.html",entradas=lista)
 	else:
-		return render_template("resultados.html",entradas=["No hay resultados"])
+		return render_template("resConsulta.html",entradas=["No hay resultados"])
 
 @app.route('/consultaNombreRest',methods=['POST'])
 def consultaNombreRest():
 	nombre=request.form['nombreRest']
 	lista=restaurantes.buscaRestaurantesXNombre(nombre)
 	if len(lista)>0:
-		return render_template("resultados.html",entradas=lista)
+		return render_template("resConsulta.html",entradas=lista)
 	else:
-		return render_template("resultados.html",entradas=["No hay resultados"])
+		return render_template("resConsulta.html",entradas=["No hay resultados"])
 
 @app.route('/consultaPaisPlatillo',methods=['POST'])
 def consultaPaisPlatillo():
 	pais=request.form['paisPlatillo']
 	lista=restaurantes.buscaRestaurantesXPais(pais)
 	if len(lista)>0:
-		return render_template("resultados.html",entradas=lista)
+		return render_template("resConsulta.html",entradas=lista)
 	else:
-		return render_template("resultados.html",entradas=["No hay resultados"])
+		return render_template("resConsulta.html",entradas=["No hay resultados"])
 
 @app.route('/consultaRestPlatillos',methods=['POST'])
 def consultaRestPlatillos():
 	restaurante=request.form['RestaurantePlatillos']
 	lista=restaurantes.buscaPlatillosRest(restaurante)
 	if len(lista)>0:
-		return render_template("resultados.html",entradas=lista)
+		return render_template("resConsulta.html",entradas=lista)
 	else:
-		return render_template("resultados.html",entradas=["No hay resultados"])
+		return render_template("resConsulta.html",entradas=["No hay resultados"])
 
 @app.route('/consultaRestIngrediente',methods=['POST'])
 def consultaRestIngrediente():
@@ -67,9 +67,9 @@ def consultaRestIngrediente():
 	ingrediente=request.form['ingredienteRest']
 	lista=restaurantes.platillosXrestIngrediente(rest,ingrediente)
 	if len(lista)>1:
-		return render_template("resultados.html",entradas=lista)
+		return render_template("resConsulta.html",entradas=lista)
 	else:
-		return render_template("resultados.html",entradas=["No hay resultados"])
+		return render_template("resConsulta.html",entradas=["No hay resultados"])
 
 
 if __name__ == '__main__':
