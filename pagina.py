@@ -7,6 +7,11 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/agregarPlatillo',methods=['POST'])
+def agregarPlatillo():
+	rest=request.form['restPlatillo']
+	restaurantes.agregarPlatillo(rest,nombrePlat,sabor,PaisOrg,Ingredientes)
+
 @app.route('/agregarRestaurante',methods=['POST'])
 def agregarRestaurante():
 	nombreRest=request.form['nombreRest']

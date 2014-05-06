@@ -15,10 +15,12 @@ def imprimirRest():
 	resultados=[]
 	for result in p.query("restaurante(A,_,_,_,_)"):
 		r=result["A"]
-		print str(r)
 		resultados.append(str(r))
-	print resultados
-	print "========== Fin de consulta ==========\n"
+	log = file("log.txt","a")
+	log = file("log.txt","a")
+	log.write(str(resultados)+"\n")
+	log.close()
+	log.close()
 	return resultados
 
 '''
@@ -31,8 +33,11 @@ def imprimirPlato():
 	for plato in p.query("platillo(_,A,_,_,_)"):
 		r=plato["A"]
 		resultados.append(str(r))
-	print resultados
-	print "========== Fin de consulta ==========\n"
+	log = file("log.txt","a")
+	log = file("log.txt","a")
+	log.write(str(resultados)+"\n")
+	log.close()
+	log.close()
 	return resultados
 
 '''
@@ -46,8 +51,9 @@ def restaurantesXtipo(tipocomida):
 	for restaurante in p.query("restaurantesXtipo(A,"+tipocomida+")"):
 		r=restaurante["A"]
 		resultados.append(str(r))
-	print resultados
-	print "========== Fin de consulta ==========\n"
+	log = file("log.txt","a")
+	log.write(str(resultados)+"\n")
+	log.close()
 	return resultados
 
 '''
@@ -71,8 +77,9 @@ def buscaRestaurantesXNombre(nombre):
 		temporal.append("Fin de restaurante")
 		resultados.append(temporal)
 		temporal=[]
-	print resultados
-	print "========== Fin de consulta ==========\n"
+	log = file("log.txt","a")
+	log.write(str(resultados)+"\n")
+	log.close()
 	return resultados
 
 '''
@@ -86,8 +93,9 @@ def buscaRestaurantesXPais(pais):
 	for restaurante in p.query("buscaRestXPais(Nombre,"+pais+")"):
 		r=restaurante["Nombre"]
 		resultados.append(str(r))
-	print resultados
-	print "========== Fin de consulta ==========\n"
+	log = file("log.txt","a")
+	log.write(str(resultados)+"\n")
+	log.close()
 	return resultados
 
 '''
@@ -112,8 +120,9 @@ def buscaPlatillosRest(restaurante):
 		temporal.append("========== Fin de platillo ==========")
 		resultados.append(temporal)
 		temporal=[]
-	print resultados
-	print "========== Fin de consulta ==========\n"
+	log = file("log.txt","a")
+	log.write(str(resultados)+"\n")
+	log.close()
 	return resultados
 
 '''
@@ -127,8 +136,9 @@ def platillosXrestIngrediente(restaurante,ingrediente):
 	resultados.append("Lista de platillos de "+restaurante+" que incluyen "+ingrediente+":")
 	for restaurante in p.query("platillosXrestIngrediente("+restaurante+",Nombre,Sabor,Pais,"+ingrediente+")"):
 		resultados.append(restaurante["Nombre"])
-	print resultados
-	print "========== Fin de consulta ==========\n"
+	log = file("log.txt","a")
+	log.write(str(resultados)+"\n")
+	log.close()
 	return resultados
 
 '''
@@ -147,6 +157,7 @@ Agrega un platillo a la base de conocimientos
 '''
 def agregarPlatillo(rest,nombrePlat,sabor,PaisOrg,Ingredientes): #sabor puede ser picante, salado, dulce, agridulce, amargo
 	arch = file("plati.pl","a")
+	arch.write('\n')
 	functor="platillo("
 	functor=functor+rest+","+nombrePlat+","+sabor+","+PaisOrg+","+Ingredientes+")." #Ingredientes por ahora lo agrego como si fuera una lista de python, creo que en prolog el manejo es algo similar
 	arch.write(functor)

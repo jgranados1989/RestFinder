@@ -32,7 +32,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">
+                <a class="navbar-brand" href="/">
                     <i class="fa fa-play-circle"></i>  <span class="light">Ir a</span> RestFinder
                 </a>
             </div>
@@ -71,12 +71,9 @@
                         <!-- agrega los resultados de la consulta-->
                         {% for elemento in entradas %}
                     
-                        <h4>{{ elemento }}</h4>
+                        <h3>{{ elemento }}</h3>
 
                         {% endfor %}
-
-
-                        <a href="/"><h1>Voler al inicio</h1></a>
 
                     </div>
                 </div>
