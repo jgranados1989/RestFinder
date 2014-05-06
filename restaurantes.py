@@ -94,10 +94,11 @@ def buscaPlatillosRest(restaurante):
 		temporal.append(str(restaurante["Nombre"]))
 		temporal.append(str(restaurante["Sabor"]))
 		temporal.append("Pais de origen: " +restaurante["Pais"])
-		temporal.append(["Ingredientes: "]+list(restaurante["Ingredientes"]))
-		#temporal.append(restaurante["Ingredientes"])
-		#for i in list(restaurante["Ingredientes"]):
-		#	print i
+		t=""
+		for i in list(restaurante["Ingredientes"]):
+			t+=str(i)+" - "
+		temporal.append(str("Ingredientes: "+t))
+		t=""
 		temporal.append("========== Fin de platillo ==========")
 		resultados.append(temporal)
 		temporal=[]

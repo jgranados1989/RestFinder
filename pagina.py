@@ -34,13 +34,33 @@ def consultaNombreRest():
 		return render_template("resultados.html",entradas=["No hay resultados"])
 
 @app.route('/consultaPaisPlatillo',methods=['POST'])
-def consultaPaisPlatillot():
+def consultaPaisPlatillo():
 	pais=request.form['paisPlatillo']
 	lista=restaurantes.buscaRestaurantesXPais(pais)
 	if len(lista)>0:
 		return render_template("resultados.html",entradas=lista)
 	else:
 		return render_template("resultados.html",entradas=["No hay resultados"])
+
+@app.route('/consultaRestPlatillos',methods=['POST'])
+def consultaRestPlatillos():
+	restaurante=request.form['RestaurantePlatillos']
+	lista=restaurantes.buscaPlatillosRest(restaurante)
+	if len(lista)>0:
+		return render_template("resultados.html",entradas=lista)
+	else:
+		return render_template("resultados.html",entradas=["No hay resultados"])
+
+@app.route('/consultaRestIngrediente',methods=['POST'])
+def consultaRestIngrediente():
+	rest=request.form['RestxIngrediente']
+	ingrediente=request.form['ingredienteRest']
+	lista=restaurantes.buscaPlatillosRest(rest,ingrediente)
+	if len(lista)>0:
+		return render_template("resultados.html",entradas=lista)
+	else:
+		return render_template("resultados.html",entradas=["No hay resultados"])
+
 
 if __name__ == '__main__':
     app.run(debug=False,host="192.168.1.103",port=9090)
