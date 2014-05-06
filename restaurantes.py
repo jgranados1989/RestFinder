@@ -3,8 +3,8 @@ from ctypes import *
 from pyswip.prolog import Prolog
 
 p=Prolog()
-#p.consult("rest.pl") #El consult lo que hace es carga el archivo .pl con todas las reglas
-#p.consult("plati.pl")
+p.consult("rest.pl") #El consult lo que hace es carga el archivo .pl con todas las reglas
+p.consult("plati.pl")
 
 '''
 Lista de restaurantes
@@ -25,6 +25,7 @@ def imprimirRest():
 Lista de platillos
 '''
 def imprimirPlato():
+	p=Prolog()
 	p.consult("plati.pl")
 	resultados=[]
 	for plato in p.query("platillo(_,A,_,_,_)"):
@@ -39,6 +40,7 @@ Lista de restaurantes filtrados por tipo de comida
 Entradas: tipo de comida a buscar (comidaRapida,comidaGourmet,pizzeria,etc)
 '''
 def restaurantesXtipo(tipocomida):
+	p=Prolog()
 	p.consult("rest.pl")
 	resultados=[]
 	for restaurante in p.query("restaurantesXtipo(A,"+tipocomida+")"):
@@ -53,6 +55,7 @@ Busqueda de restaurantes por nombre
 Entradas: nombre del restaurante
 '''
 def buscaRestaurantesXNombre(nombre):
+	p=Prolog()
 	p.consult("rest.pl")
 	resultados=[]
 	for restaurante in p.query("buscaRest("+nombre+",A,B,C,D)"):
@@ -77,6 +80,7 @@ Lista de restaurantes que tienen platillos de algun pais especifico
 Entradas: pais a buscar
 '''
 def buscaRestaurantesXPais(pais):
+	p=Prolog()
 	p.consult("plati.pl")
 	resultados=[]
 	for restaurante in p.query("buscaRestXPais(Nombre,"+pais+")"):
@@ -91,6 +95,7 @@ Lista de platillos de un restaurante especifico
 Entradas: nombre del restaurante a buscar
 '''
 def buscaPlatillosRest(restaurante):
+	p=Prolog()
 	p.consult("plati.pl")
 	resultados=[]
 	print ("Platillos de:"+restaurante+":")
@@ -116,6 +121,7 @@ Lista de platillos de un restaurante especifico que tengan un ingrediente en par
 Entradas: nombre del restaurante y el ingrediente que se desea buscar
 '''
 def platillosXrestIngrediente(restaurante,ingrediente):
+	p=Prolog()
 	p.consult("plati.pl")
 	resultados=[]
 	resultados.append("Lista de platillos de "+restaurante+" que incluyen "+ingrediente+":")
@@ -130,7 +136,7 @@ Agrega un restaurante a la base de conocimientos
 '''
 def agregarRest(nombre,tipoComida,ubicacion,telefono,horario):
 	arch = file("rest.pl","a")
-	functor="restaurante("
+	functor="\nrestaurante("
 	functor=functor+nombre+","+tipoComida+","+ubicacion+","+telefono+","+horario+")."
 	arch.write(functor)
 	p.assertz("'"+functor+"'") #con esto carga las varas a la base de conocimientos

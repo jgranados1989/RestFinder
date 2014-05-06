@@ -7,7 +7,17 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/todosRestaurantes',methods=['GET', 'POST'])
+@app.route('/agregarRestaurante',methods=['POST'])
+def agregarRestaurante():
+	nombreRest=request.form['nombreRest']
+	tipoComida=request.form['tipoComida']
+	ubicacionrest=request.form['ubicacionrest']
+	numeroRest=request.form['numeroRest']
+	horarioRest=request.form['horarioRest']
+	restaurantes.agregarRest(str(nombreRest),str(tipoComida),str(ubicacionrest),str(numeroRest),str(horarioRest))
+	return render_template("resultados.html",entradas=['Restaurante agregado exitosamente'])
+
+@app.route('/todosRestaurantes',methods=['POST'])
 def todosRestaurantes():
 	lista=restaurantes.imprimirRest()
 	if len(lista)>0:
