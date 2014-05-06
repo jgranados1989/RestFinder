@@ -179,7 +179,7 @@
                         <input id="boton" type="submit" value="Consultar" class="btn btn-default">
                     </form>
                     <br>
-                    <form action="consultaTipo" method="POST">
+                    <form action="/consultaTipo" method="POST">
                         <label>Consultar por tipo Comida</label>
                         <input type="text" name="tipoComida" required>
                         <input id="boton" type="submit" value="Consultar" class="btn btn-default">
@@ -196,13 +196,13 @@
 
                     <legend><h2>Consultar por Platillo</h2></legend>
                     
-                    <form action="consultaPaisPlatillo" method="POST">
+                    <form action="/consultaPaisPlatillo" method="POST">
                         <label>Ingresa el país del platillo</label>
                         <input type="text" name="paisPlatillo" required>
                         <input id="boton" type="submit" value="Consultar" class="btn btn-default">
                     </form>
                     <br>
-                    <form action="consultaIngrediente" method="POST">
+                    <form action="/consultaIngrediente" method="POST">
                         <label>Consultar por ingrediente</label>
                         <input type="text" name="ingredientePlatillo" required>
                         <input id="boton" type="submit" value="Consultar" class="btn btn-default">

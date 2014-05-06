@@ -33,6 +33,14 @@ def consultaNombreRest():
 	else:
 		return render_template("resultados.html",entradas=["No hay resultados"])
 
+@app.route('/consultaPaisPlatillo',methods=['POST'])
+def consultaPaisPlatillot():
+	pais=request.form['paisPlatillo']
+	lista=restaurantes.buscaRestaurantesXPais(pais)
+	if len(lista)>0:
+		return render_template("resultados.html",entradas=lista)
+	else:
+		return render_template("resultados.html",entradas=["No hay resultados"])
 
 if __name__ == '__main__':
     app.run(debug=False,host="192.168.1.103",port=9090)
