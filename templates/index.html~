@@ -185,7 +185,7 @@
                         <input id="boton" type="submit" value="Consultar" class="btn btn-default">
                     </form>
                     <br>
-                    <form action="consultaNombreRest" method="POST">
+                    <form action="/consultaNombreRest" method="POST">
                         <label>Consultar por nombre</label>
                         <input type="text" name="nombreRest" required>
                         <input id="boton" type="submit" value="Consultar" class="btn btn-default">
