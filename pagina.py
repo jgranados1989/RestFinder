@@ -24,6 +24,7 @@ def consultaTipo():
 	else:
 		return render_template("resultados.html",entradas=["No hay resultados"])
 
+@app.route('/consultaNombreRest',methods=['POST'])
 def consultaNombreRest():
 	nombre=request.form['nombreRest']
 	lista=restaurantes.buscaRestaurantesXNombre(nombre)
