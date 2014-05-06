@@ -55,8 +55,8 @@ def consultaRestPlatillos():
 def consultaRestIngrediente():
 	rest=request.form['RestxIngrediente']
 	ingrediente=request.form['ingredienteRest']
-	lista=restaurantes.buscaPlatillosRest(rest,ingrediente)
-	if len(lista)>0:
+	lista=restaurantes.platillosXrestIngrediente(rest,ingrediente)
+	if len(lista)>1:
 		return render_template("resultados.html",entradas=lista)
 	else:
 		return render_template("resultados.html",entradas=["No hay resultados"])

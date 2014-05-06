@@ -18,6 +18,7 @@ def imprimirRest():
 		print str(r)
 		resultados.append(str(r))
 	print resultados
+	print "========== Fin de consulta ==========\n"
 	return resultados
 
 '''
@@ -30,6 +31,7 @@ def imprimirPlato():
 		r=plato["A"]
 		resultados.append(str(r))
 	print resultados
+	print "========== Fin de consulta ==========\n"
 	return resultados
 
 '''
@@ -42,7 +44,8 @@ def restaurantesXtipo(tipocomida):
 	for restaurante in p.query("restaurantesXtipo(A,"+tipocomida+")"):
 		r=restaurante["A"]
 		resultados.append(str(r))
-	#print resultados
+	print resultados
+	print "========== Fin de consulta ==========\n"
 	return resultados
 
 '''
@@ -66,6 +69,7 @@ def buscaRestaurantesXNombre(nombre):
 		resultados.append(temporal)
 		temporal=[]
 	print resultados
+	print "========== Fin de consulta ==========\n"
 	return resultados
 
 '''
@@ -79,6 +83,7 @@ def buscaRestaurantesXPais(pais):
 		r=restaurante["Nombre"]
 		resultados.append(str(r))
 	print resultados
+	print "========== Fin de consulta ==========\n"
 	return resultados
 
 '''
@@ -103,7 +108,7 @@ def buscaPlatillosRest(restaurante):
 		resultados.append(temporal)
 		temporal=[]
 	print resultados
-	print "========== Fin de consulta =========="
+	print "========== Fin de consulta ==========\n"
 	return resultados
 
 '''
@@ -114,11 +119,10 @@ def platillosXrestIngrediente(restaurante,ingrediente):
 	p.consult("plati.pl")
 	resultados=[]
 	resultados.append("Lista de platillos de "+restaurante+" que incluyen "+ingrediente+":")
-	#platillosXrestIngrediente(X,Nombre,Sabor,Pais,Y)
 	for restaurante in p.query("platillosXrestIngrediente("+restaurante+",Nombre,Sabor,Pais,"+ingrediente+")"):
 		resultados.append(restaurante["Nombre"])
 	print resultados
-	print "========== Fin de consulta =========="
+	print "========== Fin de consulta ==========\n"
 	return resultados
 
 '''
