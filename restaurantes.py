@@ -17,9 +17,7 @@ def imprimirRest():
 		r=result["A"]
 		resultados.append(str(r))
 	log = file("log.txt","a")
-	log = file("log.txt","a")
 	log.write(str(resultados)+"\n")
-	log.close()
 	log.close()
 	return resultados
 
@@ -34,9 +32,7 @@ def imprimirPlato():
 		r=plato["A"]
 		resultados.append(str(r))
 	log = file("log.txt","a")
-	log = file("log.txt","a")
 	log.write(str(resultados)+"\n")
-	log.close()
 	log.close()
 	return resultados
 
@@ -106,18 +102,16 @@ def buscaPlatillosRest(restaurante):
 	p=Prolog()
 	p.consult("plati.pl")
 	resultados=[]
-	print ("Platillos de:"+restaurante+":")
 	for restaurante in p.query("platillosXrest("+restaurante+",Nombre,Sabor,Pais,Ingredientes)"):
 		temporal=[]
-		temporal.append(str(restaurante["Nombre"]))
-		temporal.append(str(restaurante["Sabor"]))
+		temporal.append("Nombre: "+str(restaurante["Nombre"]))
+		temporal.append("Sabor: "+str(restaurante["Sabor"]))
 		temporal.append("Pais de origen: " +restaurante["Pais"])
 		t=""
 		for i in list(restaurante["Ingredientes"]):
 			t+=str(i)+" - "
 		temporal.append(str("Ingredientes: "+t))
 		t=""
-		temporal.append("========== Fin de platillo ==========")
 		resultados.append(temporal)
 		temporal=[]
 	log = file("log.txt","a")
@@ -172,3 +166,4 @@ Funcion de ejecucion de pruebas
 #restaurantesXtipo("comidaRapida")
 #buscaRestaurantesXNombre("mcDonalds")
 #buscaRestaurantesXPais("alemania")
+#buscaPlatillosRest("bk")

@@ -10,7 +10,23 @@ def index():
 @app.route('/agregarPlatillo',methods=['POST'])
 def agregarPlatillo():
 	rest=request.form['restPlatillo']
-	restaurantes.agregarPlatillo(rest,nombrePlat,sabor,PaisOrg,Ingredientes)
+	nombrePlat=request.form['nombrePlatillo']
+	sabor=request.form['saborPlatillo']
+	PaisOrg=request.form['paisPlatillo']
+	Ingredientes=request.form['ingredientesPlatillo']
+	Ingredientes=str(Ingredientes).split()
+	ing="["
+	for i in Ingredientes:
+		ing+=i+','
+	largo=len(ing)
+	ing=ing[:largo-1]
+	ing+="]"
+	lista=restaurantes.buscaRestaurantesXNombre(rest)
+	if len(lista)==0:
+		return render_template("resConsulta.html",entradas=['El restaurante que digitaste no ha sido ingresado anteriormente','Los platillos deben pertener a un restautante registrado con anterioridad'])
+	else:
+		restaurantes.agregarPlatillo(str(rest).lower(),str(nombrePlat).lower(),str(sabor).lower(),str(PaisOrg).lower(),ing.lower())
+		return render_template("resConsulta.html",entradas=['Platillo agregado exitosamente'])
 
 @app.route('/agregarRestaurante',methods=['POST'])
 def agregarRestaurante():
@@ -19,7 +35,7 @@ def agregarRestaurante():
 	ubicacionrest=request.form['ubicacionrest']
 	numeroRest=request.form['numeroRest']
 	horarioRest=request.form['horarioRest']
-	restaurantes.agregarRest(str(nombreRest),str(tipoComida),str(ubicacionrest),str(numeroRest),str(horarioRest))
+	restaurantes.agregarRest(str(nombreRest).lower(),str(tipoComida).lower(),str(ubicacionrest).lower(),str(numeroRest).lower(),str(horarioRest).lower())
 	return render_template("resConsulta.html",entradas=['Restaurante agregado exitosamente'])
 
 @app.route('/todosRestaurantes',methods=['POST'])
@@ -33,7 +49,7 @@ def todosRestaurantes():
 @app.route('/consultaTipo',methods=['POST'])
 def consultaTipo():
 	tipocomida=request.form['tipoComida']
-	lista=restaurantes.restaurantesXtipo(tipocomida)
+	lista=restaurantes.restaurantesXtipo(tipocomida.lower())
 	if len(lista)>0:
 		return render_template("resConsulta.html",entradas=lista)
 	else:
@@ -42,7 +58,7 @@ def consultaTipo():
 @app.route('/consultaNombreRest',methods=['POST'])
 def consultaNombreRest():
 	nombre=request.form['nombreRest']
-	lista=restaurantes.buscaRestaurantesXNombre(nombre)
+	lista=restaurantes.buscaRestaurantesXNombre(nombre.lower())
 	if len(lista)>0:
 		return render_template("resConsulta.html",entradas=lista)
 	else:
@@ -51,7 +67,7 @@ def consultaNombreRest():
 @app.route('/consultaPaisPlatillo',methods=['POST'])
 def consultaPaisPlatillo():
 	pais=request.form['paisPlatillo']
-	lista=restaurantes.buscaRestaurantesXPais(pais)
+	lista=restaurantes.buscaRestaurantesXPais(pais.lower())
 	if len(lista)>0:
 		return render_template("resConsulta.html",entradas=lista)
 	else:
@@ -60,7 +76,7 @@ def consultaPaisPlatillo():
 @app.route('/consultaRestPlatillos',methods=['POST'])
 def consultaRestPlatillos():
 	restaurante=request.form['RestaurantePlatillos']
-	lista=restaurantes.buscaPlatillosRest(restaurante)
+	lista=restaurantes.buscaPlatillosRest(restaurante.lower())
 	if len(lista)>0:
 		return render_template("resConsulta.html",entradas=lista)
 	else:
@@ -70,7 +86,7 @@ def consultaRestPlatillos():
 def consultaRestIngrediente():
 	rest=request.form['RestxIngrediente']
 	ingrediente=request.form['ingredienteRest']
-	lista=restaurantes.platillosXrestIngrediente(rest,ingrediente)
+	lista=restaurantes.platillosXrestIngrediente(rest.lower(),ingrediente.lower())
 	if len(lista)>1:
 		return render_template("resConsulta.html",entradas=lista)
 	else:
